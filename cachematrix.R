@@ -3,13 +3,13 @@
 ## My functions cache the inverse of a matrix.
 
 ## This function creates a special "matrix" object that can cache its inverse.
-makeCacheMatrix <- function(x = matrix()) {
+makeMatrix <- function(matrix) {
         i <- NULL
         set <- function(y) {
-                x <<- y
+                matrix <<- y
                 i <<- NULL
         }
-        get <- function() x
+        get <- function() matrix
         setinvers <- function(invers) i <<- invers
         getinvers <- function() i
         list(set = set, get = get,
@@ -27,7 +27,7 @@ cacheSolve <- function(x, ...) {
                 return(i)
         }
         data <- x$get()
-        i <- solve(data, ...)
-        x$setinverse(i)
-        i
+        i <- solve(data,...)
+        x$setinvers(i)
+        x$getinvers()
 }
